@@ -1,3 +1,0 @@
-[submodule "nlp-engine"]
-	path = nlp-engine
-	url = https://github.com/VisualText/nlp-engine.git
