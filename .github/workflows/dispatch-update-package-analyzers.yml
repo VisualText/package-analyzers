@@ -28,7 +28,7 @@ jobs:
       matrix:
         repo:
           - VisualText/npm-package-nlpengine   # embeds package-analyzers at path analyzers
-          - ddehilster/py-package-nlpengine    # embeds package-analyzers at path NLPPlus/analyzers
+          - VisualText/py-package-nlpengine    # embeds package-analyzers at path NLPPlus/analyzers
     steps:
       - name: Trigger ${{ matrix.repo }}
         uses: peter-evans/repository-dispatch@v2
