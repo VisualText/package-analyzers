@@ -16,17 +16,17 @@
 S("area") = num(N("$text",2));
 S("prefix") = num(N("$text",4));
 S("station") = num(N("$text",6));
-"Resume Output.txt"<<"Phone Number: "<<N("$text",2)+" "+N("$text",4)+" "+N("$text",6)<<"\n";
+"phones.txt"<<"Phone Number: "<<N("$text",2)+" "+N("$text",4)+" "+N("$text",6)<<"\n";
 single();
 
 @RULES
 _telephone <-
-    _xWILD [match=(\+ \- 1 \()] ### (1)
-    _xNUM                       ### (2)
-    _xWILD [match=( \) \. \- _xWHITE)]   ### (3)
-    _xNUM                       ### (4)
-    _xWILD [match=(\. \- _xWHITE)]      ### (5)
-    _xNUM                       ### (6)
+    _xWILD [match=(\+ \- 1 \()]			### (1)
+    _xNUM								### (2)
+    _xWILD [match=(\) \. \- _xWHITE)]	### (3)
+    _xNUM								### (4)
+    _xWILD [match=(\. \- _xWHITE)]		### (5)
+    _xNUM								### (6)
     @@
 
 @PRE
@@ -38,17 +38,17 @@ _telephone <-
 S("area") = num(N("$text",2));
 S("prefix") = num(N("$text",4));
 S("station") = num(N("$text",6));
-"Resume Output.txt"<<"Phone Number: "<<N("$text",2)+" "+N("$text",4)+" "+N("$text",6)<<"\n";
+"phones.txt"<<"Phone Number: "<<N("$text",2)+" "+N("$text",4)+" "+N("$text",6)<<"\n";
 single();
 
 @RULES
 _telephone <-
-    _xWILD [match=(\+ \- 1 \()] ### (1)
-    _xNUM                       ### (2)
-    _xWILD [match=( \) \. \- _xWHITE)]   ### (3)
-    _xNUM                       ### (4)
-    _xWILD [match=(\. \- _xWHITE)]      ### (5)
-    _xNUM                       ### (6)
+    _xWILD [match=(\+ \- 1 \()]			### (1)
+    _xNUM								### (2)
+    _xWILD [match=(\) \. \- _xWHITE)]	### (3)
+    _xNUM								### (4)
+    _xWILD [match=(\. \- _xWHITE)]		### (5)
+    _xNUM								### (6)
     @@
  
 @PRE
@@ -60,17 +60,17 @@ _telephone <-
 S("area") = num(N("$text",2));
 S("prefix") = num(N("$text",4));
 S("station") = num(N("$text",6));
-"Resume Output.txt"<<"Phone Number: "<<N("$text",2)+" "+N("$text",4)+" "+N("$text",6)<<"\n";
+"phones.txt"<<"Phone Number: "<<N("$text",2)+" "+N("$text",4)+" "+N("$text",6)<<"\n";
 single();
 
 @RULES
 _telephone <-
-    _xWILD [match=(\+ \- 1 \()] ### (1)
-    _xNUM                       ### (2)
-    _xWILD [match=( \) \. \- _xWHITE)]   ### (3)
-    _xNUM                       ### (4)
-    _xWILD [match=(\. \- _xWHITE)]      ### (5)
-    _xNUM                       ### (6)
+    _xWILD [match=(\+ \- 1 \()]			### (1)
+    _xNUM								### (2)
+    _xWILD [match=(\) \. \- _xWHITE)]	### (3)
+    _xNUM								### (4)
+    _xWILD [match=(\. \- _xWHITE)]		### (5)
+    _xNUM								### (6)
     @@
 @POST
 L("len") = strlength(N("$text",2));
@@ -84,7 +84,7 @@ if (10 <= L("len") && L("len") <= 12) {
         S("prefix") = num(strpiece(N("$text",2),3,5));
         S("station") = num(strpiece(N("$text",2),6,9));
     }
-    "Resume Output.txt"<<"Phone Number: "<<N("$text",2)<<"\n";
+    "phones.txt"<<"Phone Number: "<<N("$text",2)<<"\n";
     S("type")="mobile";
     single();
 }
@@ -102,15 +102,15 @@ _telephone <-
 S("area") = num(N("$text",2));
 S("station") = num(N("$text",4));
 S("type")="landline";
-"Resume Output.txt"<<"Phone Number: "<<N("$text",2)+" "+N("$text",4)<<"\n";
+"phones.txt"<<"Phone Number: "<<N("$text",2)+" "+N("$text",4)<<"\n";
 single();
  
 @RULES
 _telephone <-
-    _xWILD [match=(\+ \- 1 91 \()] ### (1)
-    _xNUM                       ### (2)
-    _xWILD [match=(\) \. \- _xWHITE)]   ### (3)
-    _xNUM                       ### (4)
+    _xWILD [match=(\+ \- 1 91 \()]		### (1)
+    _xNUM								### (2)
+    _xWILD [match=(\) \. \- _xWHITE)]	### (3)
+    _xNUM								### (4)
     @@
 #----------------------------------------new--------------------------------------------
 @PRE
@@ -122,16 +122,16 @@ _telephone <-
 S("area") = num(N("$text",1));
 S("prefix") = num(N("$text",3));
 S("station") = num(N("$text",5));
-"Resume Output.txt"<<"Phone Number: "<<N("$text",1)+" "+N("$text",3)+" "+N("$text",5)<<"\n";
+"phones.txt"<<"Phone Number: "<<N("$text",1)+" "+N("$text",3)+" "+N("$text",5)<<"\n";
 single();
 
 @RULES
 _telephone <-
-    _xNUM                       ### (2)
-    _xWILD [match=( \) \. \- _xWHITE)]   ### (3)
-    _xNUM                       ### (4)
-    _xWILD [match=(\. \- _xWHITE)]      ### (5)
-    _xNUM                       ### (6)
+    _xNUM								### (1)
+    _xWILD [match=(\) \. \- _xWHITE)]	### (2)
+    _xNUM								### (3)
+    _xWILD [match=(\. \- _xWHITE)]		### (4)
+    _xNUM								### (5)
     @@
 @PRE
 <1,1> length(3);
@@ -142,16 +142,16 @@ _telephone <-
 S("area") = num(N("$text",1));
 S("prefix") = num(N("$text",3));
 S("station") = num(N("$text",5));
-"Resume Output.txt"<<"Phone Number: "<<N("$text",1)+" "+N("$text",3)+" "+N("$text",5)<<"\n";
+"phones.txt"<<"Phone Number: "<<N("$text",1)+" "+N("$text",3)+" "+N("$text",5)<<"\n";
 single();
 
 @RULES
 _telephone <-
-    _xNUM                       ### (2)
-    _xWILD [match=(\. \- _xWHITE)]   ### (3)
-    _xNUM                       ### (4)
-    _xWILD [match=(\. \- _xWHITE)]      ### (5)
-    _xNUM                       ### (6)
+    _xNUM							### (1)
+    _xWILD [match=(\. \- _xWHITE)]	### (2)
+    _xNUM							### (3)
+    _xWILD [match=(\. \- _xWHITE)]	### (4)
+    _xNUM							### (5)
     @@
  
 @PRE
@@ -163,32 +163,18 @@ _telephone <-
 S("area") = num(N("$text",1));
 S("prefix") = num(N("$text",3));
 S("station") = num(N("$text",5));
-"Resume Output.txt"<<"Phone Number: "<<N("$text",1)+" "+N("$text",3)+" "+N("$text",5)<<"\n";
+"phones.txt"<<"Phone Number: "<<N("$text",1)+" "+N("$text",3)+" "+N("$text",5)<<"\n";
 single();
 
 @RULES
 _telephone <-
-    _xNUM                       ### (2)
-    _xWILD [match=( \. \- _xWHITE)]   ### (3)
-    _xNUM                       ### (4)
-    _xWILD [match=(\. \- _xWHITE)]      ### (5)
-    _xNUM                       ### (6)
+    _xNUM							### (1)
+    _xWILD [match=(\. \- _xWHITE)]	### (2)
+    _xNUM							### (3)
+    _xWILD [match=(\. \- _xWHITE)]	### (4)
+    _xNUM							### (5)
     @@
 
-# @PRE
-# <1,1> length(3);
-# <3,3> length(4);
- 
-# @POST
-# S("area") = num(N("$text",1));
-# S("station") = num(N("$text",3));
-# S("type")="landline";
-# "Resume Output.txt"<<"Phone Number: "<<N("$text",1)+" "+N("$text",3)<<"\n";
-# single();
- 
-# @RULES
-# _telephone <-
-# 	_xNUM								### (2)
-# 	_xWILD [match=(\. \- _xWHITE)]	### (3)
-# 	_xNUM								### (4)
-# 	@@
+# NOTE: 7-digit local numbers (e.g. 456-7890) are handled in the
+# Telep1b pass as a fallback on leftover tokens, so the 2-group
+# pattern does not steal the first two groups of 3-group numbers.

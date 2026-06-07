@@ -7,9 +7,11 @@
 ###############################################
 
 @PATH _ROOT _LINE
+
 @POST
 N("con",1)= MakeCountCon(G("telephone"),"telephones");
 AddAttrs(N(1));
+
 @RULES
 _xNIL <-
 	_telephone	### (1)

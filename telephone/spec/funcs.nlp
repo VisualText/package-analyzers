@@ -12,6 +12,12 @@ AddAttrs(L("node"))
 {
     L("concept")=pnvar(L("node"),"con");
     addstrval(L("concept"),"text",pnvar(L("node"),"$text"));
+    if(pnvar(L("node"),"country"))
+    addstrval(L("concept"),"country",str(pnvar(L("node"),"country")));
+    if(pnvar(L("node"),"country_code"))
+    addstrval(L("concept"),"country_code",str(pnvar(L("node"),"country_code")));
+    if(pnvar(L("node"),"national_number"))
+    addstrval(L("concept"),"national_number",str(pnvar(L("node"),"national_number")));
     if(pnvar(L("node"),"area"))
     addstrval(L("concept"),"area",str(pnvar(L("node"),"area")));
     if(pnvar(L("node"),"prefix"))
@@ -20,7 +26,50 @@ AddAttrs(L("node"))
     addstrval(L("concept"),"station",str(pnvar(L("node"),"station")));
     if(pnvar(L("node"),"type"))
     addstrval(L("concept"),"type",str(pnvar(L("node"),"type")));
-    
+
+}
+
+# Longest valid country-code prefix (3 -> 2 -> 1 digits) of a digit
+# string, looked up in the KB country-code table (G("ccodes"), loaded
+# from kb/user/tel-country-codes.kbb). Country codes are prefix-free,
+# so longest-match is unambiguous. Returns "" if none matches.
+IntlCountryCode(L("digits"))
+{
+    L("len") = strlength(L("digits"));
+    if (L("len") > 3) {
+        L("p3") = strpiece(L("digits"),0,2);
+        if (findconcept(G("ccodes"),L("p3"))) return L("p3");
+    }
+    if (L("len") > 2) {
+        L("p2") = strpiece(L("digits"),0,1);
+        if (findconcept(G("ccodes"),L("p2"))) return L("p2");
+    }
+    L("p1") = strpiece(L("digits"),0,0);
+    if (findconcept(G("ccodes"),L("p1"))) return L("p1");
+    return 0;
+}
+
+# Country name(s) for a dialing code string, from the KB country-code
+# table. Shared codes (e.g. 44, 7) map to several territories, listed
+# alphabetically in the KB; all are joined with commas so no single
+# territory is wrongly chosen as primary. Returns 0 if unknown.
+CountryName(L("cc"))
+{
+    L("con") = findconcept(G("ccodes"),L("cc"));
+    if (!L("con")) return 0;
+    L("vals") = AttrValues(L("con"),"country");
+    L("out") = 0;
+    while (L("vals")) {
+        L("s") = getstrval(L("vals"));
+        if (L("s")) {
+            if (L("out"))
+                L("out") = L("out") + ", " + L("s");
+            else
+                L("out") = L("s");
+        }
+        L("vals") = nextval(L("vals"));
+    }
+    return L("out");
 }
 
 CheckName(L("con"),L("out"))

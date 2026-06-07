@@ -3,7 +3,11 @@ nlp	KBFuncs	# comment
 nlp	funcs	# comment
 nlp	kbinit	# comment
 nlp	Lines	# comment
+nlp	Telep0	# country/intl-prefixed NANP numbers (4-group)
+nlp	TelepIntl	# international +CC national-number form
+nlp	TelepIntlCat	# concatenated +CC numbers (KB country-code split)
 nlp	Telep1	# comment
+nlp	Telep1b	# 7-digit local number fallback
 nlp	Telep2	# comment
 nlp	kbdisp01	# comment
 nlp	output	# comment

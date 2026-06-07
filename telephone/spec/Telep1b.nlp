@@ -1,0 +1,30 @@
+###############################################
+# FILE: Telep1b
+# SUBJ: Fallback pass for shorter telephone patterns
+#       (7-digit local numbers with no area code).
+#       Runs AFTER Telep1 so 3-group numbers are already
+#       reduced; this only sees leftover bare tokens.
+# CREATED: 2026-06-06
+###############################################
+@PATH _ROOT _LINE
+
+# 7-digit local number, no area code:
+#   456-7890   456.7890   456 7890
+# prefix = exchange (3 digits), station = line (4 digits)
+@PRE
+<1,1> length(3);
+<3,3> length(4);
+
+@POST
+S("prefix") = num(N("$text",1));
+S("station") = num(N("$text",3));
+S("type") = "landline";
+"phones.txt"<<"Phone Number: "<<N("$text",1)+" "+N("$text",3)<<"\n";
+single();
+
+@RULES
+_telephone <-
+    _xNUM							### (1)
+    _xWILD [match=(\. \- _xWHITE)]	### (2)
+    _xNUM							### (3)
+    @@

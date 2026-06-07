@@ -8,4 +8,9 @@
 
 @CODE
 G("telephone") = getconcept(findroot(),"telephones");
+
+# Country-code table loaded from kb/user/tel-country-codes.kbb,
+# used by SplitConcatIntl() in funcs.nlp to split concatenated
+# international numbers (e.g. +442012341234 -> 44 + 2012341234).
+G("ccodes") = findconcept(findroot(),"codes");
 @@CODE

@@ -1,0 +1,55 @@
+###############################################
+# FILE: TelepIntlCat
+# SUBJ: Concatenated international numbers with no separators,
+#       e.g. +442012341234 -> country_code 44 + national 2012341234.
+#       Splits using the KB country-code table via the
+#       IntlCountryCode() function (funcs.nlp). Runs AFTER TelepIntl
+#       (spaced forms already consumed) and BEFORE Telep1 (so its
+#       full-digit "mobile" rule no longer misparses these).
+#       cc==1 (NANP) is split into area/prefix/station instead.
+# CREATED: 2026-06-06
+###############################################
+@PATH _ROOT _LINE
+
+# Only fire when the digit run starts with a valid country code AND
+# has national digits beyond it (so a bare "+1" that is really the
+# country code of a following separated number, e.g. "+1 (212) ...",
+# is left for the NANP passes instead of being grabbed here).
+@CHECK
+L("cc") = IntlCountryCode(N("$text",2));
+if (L("cc")) {
+    if (strlength(N("$text",2)) > strlength(L("cc")))
+        succeed();
+    else
+        fail();
+} else {
+    fail();
+}
+@@CHECK
+
+@POST
+L("digits") = N("$text",2);
+L("cc")     = IntlCountryCode(L("digits"));
+L("nat")    = strpiece(L("digits"), strlength(L("cc")), strlength(L("digits"))-1);
+if (num(L("cc")) == 1 && strlength(L("nat")) == 10) {
+    # NANP: +1 NNN NNN NNNN
+    S("country_code") = L("cc");
+    S("area")     = num(strpiece(L("nat"),0,2));
+    S("prefix")   = num(strpiece(L("nat"),3,5));
+    S("station")  = num(strpiece(L("nat"),6,9));
+    "phones.txt"<<"Phone Number: +"<<L("cc")<<" "<<L("nat")<<"\n";
+} else {
+    S("country_code")    = num(L("cc"));
+    S("national_number") = L("nat");
+    S("type")            = "international";
+    L("cname") = CountryName(L("cc"));
+    if (L("cname")) S("country") = L("cname");
+    "phones.txt"<<"Phone Number: +"<<L("cc")<<" "<<L("nat")<<"\n";
+}
+single();
+
+@RULES
+_telephone <-
+    \+         ### (1)
+    _xNUM      ### (2)
+    @@

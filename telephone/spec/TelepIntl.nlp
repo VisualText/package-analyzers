@@ -1,0 +1,45 @@
+###############################################
+# FILE: TelepIntl
+# SUBJ: International numbers in "+CC national" form.
+#       Runs AFTER Telep0 (so +1 NANP keeps area/prefix/
+#       station) but BEFORE Telep1 (so spaced intl numbers
+#       are claimed before the NANP rules mangle them).
+#       Schema: country_code + national_number (per design).
+#       Matches: +44 20 1234 1234   +33 1 23 45 67 89
+#                +370 601 12345     +7 495 123-45-67
+#                +212-456-7890      +86 138 0013 8000
+#       NOT handled here (need a country-code table):
+#         - concatenated forms with no separators
+#           (+442012341234) -> fall through to Telep1
+#         - country code 1 (NANP) -> handled by Telep0/Telep1
+# CREATED: 2026-06-06
+###############################################
+@PATH _ROOT _LINE
+
+# Leave country code 1 (US/Canada) to the NANP passes.
+@CHECK
+if (num(N("$text",2)) == 1)
+    fail();
+else
+    succeed();
+@@CHECK
+
+# + <country code> <sep> <national number = one run of digit groups>
+# National number is captured as a single wild so internal spacing
+# is preserved; the leading separator is consumed by element (3).
+@POST
+S("country_code")    = num(N("$text",2));
+S("national_number") = N("$text",4);
+S("type")            = "international";
+L("cname") = CountryName(N("$text",2));
+if (L("cname")) S("country") = L("cname");
+"phones.txt"<<"Phone Number: +"<<N("$text",2)+" "+N("$text",4)<<"\n";
+single();
+
+@RULES
+_telephone <-
+    \+                                                      ### (1)
+    _xNUM                                                   ### (2) country code
+    _xWILD [match=(\  \t \- \. \( \))]                      ### (3) separator after cc
+    _xWILD [min=1 max=0 match=(_xNUM \  \t \- \. \( \))]    ### (4) national number
+    @@

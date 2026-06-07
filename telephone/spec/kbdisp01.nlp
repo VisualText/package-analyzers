@@ -8,6 +8,6 @@
 
 @CODE
 
-DisplayKB(G("telephone"),1);
+SaveKB("telephones.kbb",G("telephone"));
 
 @@CODE
