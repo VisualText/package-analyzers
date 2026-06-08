@@ -1,0 +1,15 @@
+BOOKMARK EXPORT - plain list
+
+https://www.wikipedia.org/
+https://www.reddit.com/r/programming/
+https://old.reddit.com/r/programming/top/?t=week
+https://news.bbc.co.uk/
+https://www.lemonde.fr/
+https://www.spiegel.de/
+https://github.com/trending?since=daily
+https://gitlab.com/explore/projects/starred
+ftp://ftp.gnu.org/gnu/
+https://archive.org/web/
+https://web.archive.org/web/2026*/example.com
+https://duckduckgo.com/?q=nlp+plus&ia=web
+https://bit.ly/saved-1

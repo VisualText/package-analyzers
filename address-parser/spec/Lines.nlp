@@ -15,7 +15,7 @@ _BLANKLINE <-
     \n ### (2)
     @@
 
-_LINE <-
+_ADDRESSZONE <-
     _xWILD [min=0 max=0 fails=(\r \n)] ### (1)
     _xWILD [one match=(\n _xEND)] ### (2)
     @@

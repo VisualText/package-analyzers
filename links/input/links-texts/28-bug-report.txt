@@ -1,0 +1,18 @@
+BUG REPORT
+
+Summary: Links with query strings are truncated in the preview pane.
+Severity: Medium
+
+Steps:
+1. Open https://app.example.com/preview.
+2. Paste https://www.example.com/search?q=test&page=2&sort=desc.
+3. Observe truncation after the first parameter.
+
+Expected: the full URL https://www.example.com/search?q=test&page=2&sort=desc
+is preserved.
+
+Related upstream issue: https://github.com/example/preview/issues/4456.
+Reference spec: https://www.rfc-editor.org/rfc/rfc3986. CI run that caught it:
+https://ci.example.io/runs/90210?tab=logs.
+
+Workaround doc: https://docs.example.com/known-issues#query-strings.

@@ -12,6 +12,6 @@ splice(1,1);
 
 @RULES
 _xNIL <-
-	_LINE	### (1)
+	_ADDRESSZONE	### (1)
 	@@
 

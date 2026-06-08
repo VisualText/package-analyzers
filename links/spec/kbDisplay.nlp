@@ -1,0 +1,13 @@
+###############################################
+# FILE: kbDisplay
+# SUBJ: comment
+# AUTH: David de Hilster
+# CREATED: 2026-6-8 16:39:34
+# MODIFIED:
+###############################################
+
+@CODE
+
+SaveKB("links.kbb",G("links"));
+
+@@CODE

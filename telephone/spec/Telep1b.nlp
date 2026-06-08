@@ -6,7 +6,7 @@
 #       reduced; this only sees leftover bare tokens.
 # CREATED: 2026-06-06
 ###############################################
-@PATH _ROOT _LINE
+@NODES _TELEPHONEZONE
 
 # 7-digit local number, no area code:
 #   456-7890   456.7890   456 7890
@@ -28,3 +28,4 @@ _telephone <-
     _xWILD [match=(\. \- _xWHITE)]	### (2)
     _xNUM							### (3)
     @@
+    

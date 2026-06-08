@@ -1,0 +1,31 @@
+###############################################
+# FILE: EmailZone
+# SUBJ: Build _EMAILZONE regions around a literal "@" trigger.
+#       Operates on the whole tokenized text (@NODES _ROOT), not lines.
+#
+#       The zone is the maximal run of "email characters" surrounding
+#       the "@": words (_xALPHA), numbers (_xNUM) and the punctuation
+#       that is legal inside an address. Rather than hard-code that
+#       punctuation here we lean on the dictionary: charactders.dict
+#       tags every email-legal character token with ec1, so the run is
+#       simply  _xALPHA | _xNUM | _xVAR("ec1")  collected on both sides
+#       of the "@". Whitespace and non-email delimiters (: < > " ...)
+#       are NOT in the dictionary, so the run stops at them - which
+#       also strips a leading "mailto:". That guarantees the whole
+#       local@host sits inside the zone and nothing past the
+#       surrounding delimiters does.
+#
+#       NOTE: the node is _EMAILZONE (no internal underscore) - the
+#       rule parser splits a reduce-name at an internal "_", so
+#       "_EMAIL_ZONE" will not compile. Every downstream email pass
+#       runs @PATH _ROOT _EMAILZONE.
+# CREATED: 2026-06-08
+###############################################
+@NODES _ROOT
+
+@RULES
+_EMAILZONE <-
+	_xWILD [min=1 max=0 match=(_xALPHA _xNUM _xVAR("ec1"))]	### (1) local-side run
+	\@ [trig]												### (2) the "@" trigger
+	_xWILD [min=1 max=0 match=(_xALPHA _xNUM _xVAR("ec1"))]	### (3) host-side run
+	@@

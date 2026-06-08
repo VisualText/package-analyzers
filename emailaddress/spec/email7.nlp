@@ -7,12 +7,14 @@
 ###############################################
 
 
-@PATH _ROOT _LINE
+@NODES _EMAILZONE
+
 @POST
 N("con",1) = MakeCountCon(G("email"),"email");
 AddAttrs(N(1));
+
 @RULES
 _xNIL <-
-    _email
+    _email	### (1)
     @@
 

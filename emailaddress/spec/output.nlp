@@ -7,5 +7,7 @@
 ###############################################
 
 @CODE
-XMLOut("output.json")
+
+JsonKB("output.json",G("email"));
+
 @@CODE

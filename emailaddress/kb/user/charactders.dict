@@ -1,0 +1,39 @@
+# Groups one character tokens that are valid in email addresses.
+# This is used to determine if a token is a valid email address or not.
+
+\. ec1=1
+\- ec1=1
+\_ ec1=1
+\$ ec1=1
+\* ec1=1
+\' ec1=1
+\( ec1=1
+\) ec1=1
+\! ec1=1
+\# ec1=1
+\% ec1=1
+\& ec1=1
+\+ ec1=1
+\/ ec1=1
+\= ec1=1
+\? ec1=1
+\^ ec1=1
+\_ ec1=1
+\{ ec1=1
+\| ec1=1
+\} ec1=1
+\~ ec1=1
+
+# These are characters that are valid in email addresses,
+# but not in the local part of the email address. They are only
+# valid in the domain part of the email address.
+
+\. ec2=1
+\- ec2=1
+\_ ec2=1
+\$ ec2=1
+\* ec2=1
+\' ec2=1
+\+ ec2=1
+\( ec2=1
+\) ec2=1

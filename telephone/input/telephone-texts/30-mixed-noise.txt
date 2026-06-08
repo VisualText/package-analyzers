@@ -1,0 +1,18 @@
+SCRATCH FILE - lots of numeric noise, few real phones
+
+prices: $19.99, $1,234.56, 12% off, save 50%. order #4456-A, SKU 778899.
+dates: 2026-06-08, 06/08/2026, 5/12, fiscal Q3. meeting at 3pm or 4:30.
+ids: invoice 8821, ticket 88231, ZIP 95814, room 210, gate 22, floor 12.
+stats: 1,250 students, 2,048 sessions, 99.9% SLA, 100 req/min, build 4456.
+measurements: 350 5th Ave, 8+ guests, 24/7 service, 9am-5pm hours.
+
+real phones buried in here:
+  -> main: (212) 555-0320
+  -> direct: 212-555-0321
+  -> toll-free: 1-800-555-0322
+  -> local (no area code): 555-0323
+  -> intl: +44 20 1234 1234
+  -> country-coded: +1 (212) 555-0324
+
+not phones (should be ignored): the year 1998, the score 21-17,
+the ratio 16:9, the address 350, the code 4456-A.

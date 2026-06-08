@@ -7,7 +7,7 @@
 ###############################################
 
 
-@PATH _ROOT _LINE
+@NODES _EMAILZONE
 @PRE
 <2,2> var("ispart");
 @RULES

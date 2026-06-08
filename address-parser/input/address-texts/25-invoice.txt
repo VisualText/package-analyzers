@@ -1,0 +1,16 @@
+INVOICE #8821
+Date: 2026-05-12
+
+BILL TO:
+Acme Retail
+200 Market Street, Philadelphia, PA 19106-0200.
+
+SHIP TO:
+Acme Retail Warehouse
+3500 Dock Avenue, Philadelphia, PA 19148-3500.
+
+REMIT PAYMENT TO:
+PO BOX 4100, Philadelphia, PA 19101-4100.
+
+Subtotal: $12,500.00   Tax: $750.00   Total: $13,250.00
+Terms: Net 30. Account 556677.

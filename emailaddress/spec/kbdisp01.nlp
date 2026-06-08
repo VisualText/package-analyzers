@@ -8,6 +8,6 @@
 
 @CODE
 
-DisplayKB(G("email"),1);
+SaveKB("emails.kbb",G("email"),1);
 
 @@CODE

@@ -1,0 +1,17 @@
+BUG REPORT
+
+Summary: Dialer drops the country code on paste.
+Severity: High
+Reporter callback: (408) 555-0300
+
+Steps:
+1. Paste +1 (408) 555-0301 into the field.
+2. Observe the +1 is stripped.
+
+Workaround: type 408-555-0302 manually, or use the toll-free fallback
+1-800-555-0303.
+
+Upstream vendor (Germany): +49 30 12345678. Their concatenated test line
+is +442012341234. Local QA relay: 555-0304.
+
+Build 4456. Affects 2,048 sessions.

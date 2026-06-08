@@ -1,0 +1,13 @@
+Ticket #88231
+Status: OPEN
+Reporter callback: (646) 555-0250
+
+----- Original message -----
+Customer says they called 646-555-0251 three times with no answer.
+They also tried the toll-free line 1-800-555-0252.
+
+----- Internal note -----
+Escalate to the NOC at 646.555.0253. The customer's local number is
+555-0254. Their EU subsidiary uses +49 30 12345678.
+
+Account value $12,500. Priority P1. Callback window 2-4pm.

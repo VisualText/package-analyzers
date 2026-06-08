@@ -1,0 +1,18 @@
+###############################################
+# FILE: email0z
+# SUBJ: Rename the _emaildone nodes produced by email0 back to
+#       _email, just before email7 collects them into the KB.
+#       email0 emits _emaildone (not _email) so the legacy passes
+#       (email1-6, some of which descend into _email) cannot
+#       re-process and corrupt the already-decomposed result.
+# CREATED: 2026-06-07
+###############################################
+@NODES _EMAILZONE
+
+@POST
+pnrename(N(1),"_email");
+
+@RULES
+_xNIL <-
+    _emaildone   ### (1)
+    @@

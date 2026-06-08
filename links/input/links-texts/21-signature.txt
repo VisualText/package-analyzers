@@ -1,0 +1,9 @@
+--
+Dr. Helen Park
+Director of Research, Example Institute
+Web:     https://www.example.edu/~hpark
+Lab:     https://lab.example.edu/projects
+Profile: https://scholar.example.edu/citations?user=abc123
+
+Preprints available at https://arxiv.org/a/park_h_1.
+Confidential. See our policy at https://www.example.edu/legal/privacy.

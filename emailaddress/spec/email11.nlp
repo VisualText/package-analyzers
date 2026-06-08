@@ -1,14 +1,18 @@
 ###############################################
 # FILE: email11
-# SUBJ: comment
+# SUBJ: comment ec2=1\n
 # AUTH: Kruthika
 # CREATED: 2023-10-30 14:10:24
 # MODIFIED:
 ###############################################
 
-@PATH _ROOT _LINE 
+@NODES _EMAILZONE
+
+# Example:  charitysc123 at 243 dot org
+#   local part prepended to an obfuscated "<name> at <domain> dot <tld>"
+#   address that email1 tagged "nox" (a 2-label at/dot domain).
 @PRE
-<3,3> var("nox");
+<3,3> varz("nox");
 @POST
 S("local")=N("$text",2);
 S("dn")= N("dn",3);
@@ -16,11 +20,14 @@ S("tld")=N("tld",3);
 single();
 @RULES
 _emails <-
-	_xWILD [one match=(_xWHITE _xSTART \-)]
-	_xWILD [min =1 max=0 match=(_xALPHA _xNUM \. \- \_ \$ \* \' \+\+ \( \) )]
-	_email	### (1)
+	_xWILD [one match=(_xWHITE _xSTART \-)]						### (1)
+	_xWILD [min=1 max=0 match=(_xALPHA _xNUM _xVAR ("ec1"))]	### (2)
+	_email														### (3)
 	@@
 
+# Example:  user at mail dot example dot com
+#   local part prepended to a 3-label at/dot domain with no country,
+#   tagged "nor" by email1 (domainname = mail.example.com).
 @PRE
 <3,3> var("nor");
 @POST
@@ -29,16 +36,19 @@ S("domainname")=N("domainname",3);
 single();
 @RULES
 _emails <-
-	_xWILD [one match=(_xWHITE _xSTART \-)]
-	_xWILD [min =1 max=0 match=(_xALPHA _xNUM \. \- \_ \$ \* \' \+\( \) )]
-	_email	### (1)
+	_xWILD [one match=(_xWHITE _xSTART \-)]						### (1)
+	_xWILD [min=1 max=0 match=(_xALPHA _xNUM _xVAR("ec2"))]	### (2)
+	_email														### (3)
 	@@
 
+# Example:  kenethfpp at mails dot yahoo dot uk
+#   local part prepended to a 3-label at/dot domain ending in a ccTLD,
+#   tagged "nop" by email1 (dn=mails, tld=yahoo, cd=uk, country set).
 @PRE
 <3,3> var("nop");
 @POST
 S("local")=N("$text",2);
-S("domainname")=N("domainname",3)
+S("domainname")=N("domainname",3);
 S("dn")= N("dn",3);
 S("tld")=N("tld",3);
 S("cd")=N("cd",3);
@@ -46,7 +56,7 @@ S("country")=N("country",3);
 single();
 @RULES
 _emails <-
-	_xWILD [one match=(_xWHITE _xSTART \-)]
-	_xWILD [min =1 max=0 match=(_xALPHA _xNUM \. \- \_ \$ \* \' \+\( \) )]
-	_email	### (1)
+	_xWILD [one match=(_xWHITE _xSTART \-)]						### (1)
+	_xWILD [min=1 max=0 match=(_xALPHA _xNUM _xVAR("ec2"))]	### (2)
+	_email														### (3)
 	@@

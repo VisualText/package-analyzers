@@ -1,0 +1,155 @@
+# ============================================================
+# EMAIL ADDRESS VARIATIONS - test corpus for the NLP++ analyzer
+# One candidate per line (the analyzer is line-oriented). Lines
+# starting with # are section headers / notes, not test data.
+# Use to widen and harden the email rules and the domain split.
+# ============================================================
+
+# ------------------------------------------------------------
+# Standard local@domain.tld
+# ------------------------------------------------------------
+john@example.com
+john.doe@example.com
+john_doe@example.com
+john-doe@example.com
+jane.doe123@example.org
+a@b.com
+
+# ------------------------------------------------------------
+# Plus-addressing (sub-addressing) - tag in local part
+# ------------------------------------------------------------
+jennifer.smith+work@example.com
+user+newsletter@example.org
+billing+acct123@example.net
+
+# ------------------------------------------------------------
+# Other RFC-permitted local-part characters
+# ------------------------------------------------------------
+user.name@example.com
+user'apostrophe@example.com
+user%percent@example.com
+user&amp@example.com
+user=eq@example.com
+user/slash@example.com
+user{brace}@example.com
+disposable.style.email.with+symbol@example.com
+
+# ------------------------------------------------------------
+# Subdomains (generic, non-country) - tld should still be split
+# ------------------------------------------------------------
+user@subdomain.example.com
+user@mail.example.com
+user@deep.sub.example.com
+user@a.b.c.example.com
+admin@server123.example.net
+
+# ------------------------------------------------------------
+# Country-code TLDs (ccTLD) - cd/country expected
+# ------------------------------------------------------------
+user@example.co.uk
+user@example.com.au
+user@example.de
+user@example.fr
+user@example.co.jp
+user@subdomain.example.co.uk
+
+# ------------------------------------------------------------
+# Multi-level public suffix (label before ccTLD)
+# ------------------------------------------------------------
+alice@university.edu.uk
+student@dept.university.ac.uk
+gov.user@agency.gov.uk
+
+# ------------------------------------------------------------
+# New / long gTLDs (should be in domain.dict)
+# ------------------------------------------------------------
+hello@example.technology
+photos@studio.photography
+contact@my-startup.io
+team@product.app
+shop@store.shopping
+info@firm.consulting
+user@example.museum
+user@example.travel
+
+# ------------------------------------------------------------
+# Numeric and mixed
+# ------------------------------------------------------------
+12345@example.com
+user@123domain.com
+user1234@sub.example.com
+2024.team@example.org
+
+# ------------------------------------------------------------
+# Case variations (domains are case-insensitive)
+# ------------------------------------------------------------
+User@Example.Com
+INFO@COMPANY.ORG
+MixedCase@Sub.Example.Co.UK
+
+# ------------------------------------------------------------
+# Hyphens in domain labels
+# ------------------------------------------------------------
+sales@e-commerce-site.org
+contact@my-website.co.uk
+user@a-b-c.example-domain.com
+
+# ------------------------------------------------------------
+# Obfuscated to evade email scrapers - "at" for @, "dot" for .
+# ------------------------------------------------------------
+# plain "at" / "dot" words
+kenneth at example dot com
+charity123 at example dot org
+john at gmail dot com
+first dot last at example dot com
+# UPPER / mixed case
+info AT example DOT co DOT uk
+Jane At Example Dot Net
+john AT example DOT com
+# bracketed
+john [at] example [dot] com
+mary {at} example {dot} org
+steve <at> example <dot> net
+# parenthesized
+jane (at) example (dot) net
+sam (at) sub (dot) example (dot) com
+# spaced-out symbols
+john @ example . com
+sarah @ example . co . uk
+# keep one symbol, spell out the other
+john@example dot com
+john at example.com
+# "nospam" / "remove this" decoys
+john.nospam@example.com
+jane@example.com.removethis
+remove.this.john at example dot com
+# embedded in prose
+Reach me at john dot doe at example dot com please.
+Contact support [at] company [dot] io for help.
+
+# ------------------------------------------------------------
+# Embedded in prose
+# ------------------------------------------------------------
+Please contact john.smith@emailprovider.com for details.
+You can reach Sarah at sarah_j@example.org anytime.
+Email us at support-team123@techsupport.net for help.
+Two addresses: a@first.com and b@second.org here.
+
+# ------------------------------------------------------------
+# Tricky / edge cases (should these match - and how?)
+# ------------------------------------------------------------
+"john doe"@example.com
+user@[192.168.1.1]
+user@localhost
+firstname.lastname@example.com
+very.common@example.com
+x@example.com
+user@example
+user@.com
+user@example..com
+.user@example.com
+user.@example.com
+user@@example.com
+plainaddress
+@no-local.com
+user@-leadinghyphen.com

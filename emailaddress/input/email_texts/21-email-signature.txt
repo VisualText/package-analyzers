@@ -1,0 +1,9 @@
+--
+Dr. Helen Park
+Director of Research, Example Institute
+Office: +1 (555) 010-2233
+Email: helen.park@research.example.edu
+Assistant: assistant+park@research.example.edu
+
+Confidentiality notice: this message is intended only for the addressee.
+If received in error, notify it-helpdesk@example.edu and delete it.

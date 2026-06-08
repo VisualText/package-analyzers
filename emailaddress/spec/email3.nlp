@@ -7,7 +7,7 @@
 ###############################################
 
 
-@PATH _ROOT _LINE _emailx
+@PATH _ROOT _EMAILZONE _emailx
 @PRE
 <1,1> var("ispart");
 @POST

@@ -2,7 +2,7 @@ dicttok	nil	# Gen:   Convert input to token list
 nlp	KBFuncs	# comment
 nlp	funcs	# comment
 nlp	kbinit	# comment
-nlp	Lines	# comment
+nlp	TelephoneZone	# build _TELEPHONEZONE regions around number runs (whole text)
 nlp	Telep0	# country/intl-prefixed NANP numbers (4-group)
 nlp	TelepIntl	# international +CC national-number form
 nlp	TelepIntlCat	# concatenated +CC numbers (KB country-code split)

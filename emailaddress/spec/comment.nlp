@@ -1,0 +1,18 @@
+###############################################
+# FILE: comment
+# SUBJ: comment
+# AUTH: David de Hilster
+# CREATED: 2026-6-7 18:17:33
+# MODIFIED:
+###############################################
+
+@NODES _LINE
+
+@POST
+pnrename(X(2),"_comment");
+
+@RULES
+_xNIL <-
+	_xSTART	### (1)
+	\#
+	@@

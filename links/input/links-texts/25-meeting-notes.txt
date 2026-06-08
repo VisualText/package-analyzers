@@ -1,0 +1,16 @@
+PROJECT SYNC - 2026-05-12
+
+Agenda doc: https://docs.example.com/d/sync-2026-05-12.
+
+Action items:
+1. Update the deploy guide at https://wiki.example.com/deploy.
+2. Review the PR https://github.com/example/project/pull/4456.
+3. Check the dashboard https://grafana.example.io/d/abc/overview?from=now-7d.
+
+Links shared in chat:
+- https://www.smashingmagazine.com/2026/06/css-tips/
+- https://web.dev/articles/lcp
+- ftp://ftp.example.net/builds/nightly.zip
+
+Recording: https://zoom.us/rec/share/abcXYZ123. Next sync notes will go to
+https://docs.example.com/d/sync-next.

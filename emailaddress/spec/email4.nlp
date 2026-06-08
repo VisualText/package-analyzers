@@ -7,7 +7,7 @@
 ###############################################
 
 
-@PATH _ROOT _LINE _emailx
+@PATH _ROOT _EMAILZONE _emailx
 @POST
 
 X("local",3)= pnvar(N(1),"local");

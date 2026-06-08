@@ -6,7 +6,7 @@
 # MODIFIED:
 ###############################################
 
-@PATH _ROOT _LINE
+@NODES _EMAILZONE
 
 @CHECK
 if((pnvar(N(6),"country")||pnvar(N(6),"domain"))&&pnvar(N(8),"country"))
@@ -23,32 +23,32 @@ single();
 
 @RULES
 _email <-
-	_xWILD [one match=(_xWHITE _xSTART \-)]
-	_xWILD [min =1 max=0 match=(_xALPHA _xNUM \. \- \_ \$ \* \' \( \) \! \# \% \& \+ \- \/ \= \? \^ \_ \{ \| \} \~)]	
-	\@
-	_xWILD [min =1 max=0 match=(_xALPHA _xNUM \-  )]
-	\.	
-	_xALPHA						### (3)
-	\. 
-	_xALPHA 
+	_xWILD [one match=(_xWHITE _xSTART \-)]						### (1)
+	_xWILD [min =1 max=0 match=(_xALPHA _xNUM _xVAR ("ec1"))]	### (2)
+	\@															### (3)
+	_xWILD [min =1 max=0 match=(_xALPHA _xNUM \-)]				### (4)
+	\.															### (5)
+	_xALPHA														### (6)
+	\.															### (7)
+	_xALPHA														### (8)
 	@@
 
 @POST
 S("local")=N("$text",2);
-S("domainname")= N("$text",4)+"."+N("$text",6)+"."+N("$text",8)
+S("domainname")= N("$text",4)+"."+N("$text",6)+"."+N("$text",8);
 S("non")=1;
 CheckMore(N(8));
 single();
 @RULES
 _email <-
-	_xWILD [one match=(_xWHITE _xSTART \-)]
-	_xWILD [min =1 max=0 match=(_xALPHA _xNUM \. \- \_ \$ \* \' \( \) \! \# \% \& \+ \- \/ \= \? \^ \_ \{ \| \} \~)]	
-	\@
-	_xWILD [min =1 max=0 match=(_xALPHA _xNUM \-  )]
-	\.	
-	_xALPHA						### (3)
-	\. 
-	_xALPHA 
+	_xWILD [one match=(_xWHITE _xSTART \-)]						### (1)
+	_xWILD [min =1 max=0 match=(_xALPHA _xNUM _xVAR ("ec1"))]	### (2)
+	\@															### (3)
+	_xWILD [min =1 max=0 match=(_xALPHA _xNUM \-)]				### (4)
+	\.															### (5)
+	_xALPHA														### (6)
+	\.															### (7)
+	_xALPHA														### (8)
 	@@
 @CHECK
 if(pnvar(N(6),"country")||pnvar(N(6),"domain"))
@@ -62,12 +62,12 @@ S("tld")=N("$text",6);
 single();
 @RULES
 _email <-
-	_xWILD [one match=(_xWHITE _xSTART \-)]
-	_xWILD [min =1 max=0 match=(_xALPHA _xNUM \. \- \_ \$ \* \' \( \) \! \# \% \& \+ \- \/ \= \? \^ \_ \{ \| \} \~ )]	
-	\@
-	_xWILD [min =1 max=0 match=(_xALPHA _xNUM  \- \_)]
-	\.	
-	_xALPHA						### (3)
+	_xWILD [one match=(_xWHITE _xSTART \-)]						### (1)
+	_xWILD [min =1 max=0 match=(_xALPHA _xNUM _xVAR("ec1"))]	### (2)
+	\@															### (3)
+	_xWILD [min =1 max=0 match=(_xALPHA _xNUM \- \_)]			### (4)
+	\.															### (5)
+	_xALPHA														### (6)
 	@@
 ##
 @CHECK

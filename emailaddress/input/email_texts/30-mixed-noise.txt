@@ -1,0 +1,19 @@
+SCRATCH FILE - random notes, lots of noise
+
+prices: $19.99, 12% off, ref #4456-A. meeting at 3pm at the cafe near 5th.
+the @handle on social is @nimbusapp (not an email!). see you @ noon.
+
+real emails buried in here:
+  -> first.last@example.com
+  -> sub.domain test: user@a.b.c.example.com
+  -> numeric: 2024.team@example.org
+  -> hyphenated: sales@e-commerce-site.org
+
+obfuscated, mixed in with prose: you can also reach me at
+jane dot doe at sub dot example dot co dot uk if all else fails, around
+lunchtime or so.
+
+decoys / not emails: plainaddress, @no-local.com, user@localhost,
+the cost is 5@10 dollars each. cc: someone at some point dropped by.
+
+last one: support+priority@helpdesk.example.io

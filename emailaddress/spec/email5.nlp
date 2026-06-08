@@ -6,14 +6,14 @@
 # MODIFIED:
 ###############################################
 
-@PATH _ROOT _LINE _emailx
+@PATH _ROOT _EMAILZONE _emailx
 
 @POST
 splice(1,1);
-pnrename(X(3),"_email")
+pnrename(X(3),"_email");
 X("spec",3)=1;
 
 @RULES
-	_emailn <-	
-		_word
-	@@
+_emailn <-	
+	_word
+@@

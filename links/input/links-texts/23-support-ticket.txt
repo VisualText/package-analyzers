@@ -1,0 +1,16 @@
+Ticket #88231
+Status: OPEN
+Reporter: a customer
+
+----- Original message -----
+The page at https://app.example.com/dashboard won't load. I also tried
+https://app.example.com/dashboard?reset=1 with no luck.
+
+The error links to https://status.example.com/incidents/4456.
+
+----- Internal note -----
+Repro at https://staging.example.com/dashboard. Logs:
+https://logs.example.io/?service=web&from=now-1h.
+
+Customer's screenshot is hosted at https://i.imgur.com/AbCdEfG.png. Escalate
+per the runbook https://runbooks.example.com/web/dashboard.md.
