@@ -6,7 +6,7 @@
 # MODIFIED:
 ###############################################
 
-@PATH _ROOT _LINE
+@NODES _TELEPHONEZONE
 
 @POST
 N("con",1)= MakeCountCon(G("telephone"),"telephones");

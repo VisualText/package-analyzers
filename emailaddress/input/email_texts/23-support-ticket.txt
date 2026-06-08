@@ -1,0 +1,17 @@
+Ticket #88231
+Status: OPEN
+Reporter: angry.customer@example.com
+Assigned: support-agent@helpdesk.example.com
+
+----- Original message -----
+From: angry.customer@example.com
+To: support@example.com
+
+I've been trying to reach someone for days. I emailed help@example.com and
+got nothing. A friend told me to try escalations@support.example.com but
+that bounced.
+
+----- Internal note -----
+Loop in the SRE on-call (oncall@ops.example.com) and the account manager
+(am.smith@sales.example.com). Customer also left a number and said we could
+reach the office at frontdesk at acme-client dot com.

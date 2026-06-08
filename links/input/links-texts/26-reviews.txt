@@ -1,0 +1,15 @@
+PRODUCT REVIEWS - Nimbus Notes app
+
+*****  "Love it." Full review at https://www.techradar.com/reviews/nimbus-notes.
+       Download: https://nimbusnotes.app/download.
+
+***    "Sync is flaky." Reported it at https://community.nimbusnotes.app/t/sync/88.
+
+*****  "Great web clipper." See the demo https://www.youtube.com/watch?v=NbXyZ.
+       Extension: https://chrome.google.com/webstore/detail/nimbus/abcdefghij.
+
+**     "Pricey." Pricing at https://nimbusnotes.app/pricing compared on
+       https://www.g2.com/products/nimbus-notes/reviews.
+
+Docs and help live at https://help.nimbusnotes.app/ and the status page is
+https://status.nimbusnotes.io/.

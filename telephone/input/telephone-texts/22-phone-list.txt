@@ -1,0 +1,18 @@
+FAMILY & WORK PHONE LIST - keep private
+
+Family:
+  mom            (503) 555-0240
+  dad            503-555-0241
+  sister         503.555.0242
+
+Work:
+  manager        212-555-0243
+  reception      (212) 555-0244
+  help desk      1-800-555-0245
+
+Services:
+  plumber        555-0246
+  dentist        503 555 0247
+  bank (intl)    +44 20 1234 1234
+
+Old, disconnected: 503-555-0000 (do not call).

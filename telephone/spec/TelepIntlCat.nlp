@@ -9,7 +9,7 @@
 #       cc==1 (NANP) is split into area/prefix/station instead.
 # CREATED: 2026-06-06
 ###############################################
-@PATH _ROOT _LINE
+@NODES _TELEPHONEZONE
 
 # Only fire when the digit run starts with a valid country code AND
 # has national digits beyond it (so a bare "+1" that is really the

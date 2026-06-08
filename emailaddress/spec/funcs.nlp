@@ -8,6 +8,44 @@
 
 @DECL
 
+# Last dot-separated label of a host string ("a.b.example" -> "example").
+LastLabel(L("s")) {
+    L("tail") = strrchr(L("s"),".");
+    if (L("tail"))
+        return strpiece(L("tail"),1,strlength(L("tail"))-1);
+    return L("s");
+}
+
+# Everything before the last label ("a.b.example" -> "a.b"); 0 if none.
+DropLastLabel(L("s")) {
+    L("tail") = strrchr(L("s"),".");
+    if (L("tail"))
+        return strpiece(L("s"),0,strlength(L("s"))-strlength(L("tail"))-1);
+    return 0;
+}
+
+# Known second-level public-suffix labels used under ccTLDs that are
+# NOT in domain.dict (co.uk, ac.uk, ...). com/edu/gov/net/org already
+# carry a "domain" tag, so they don't need to be listed here.
+SecondLevel(L("s")) {
+    L("s") = strtolower(L("s"));
+    if (strequal(L("s"),"co"))  return 1;
+    if (strequal(L("s"),"com")) return 1;
+    if (strequal(L("s"),"net")) return 1;
+    if (strequal(L("s"),"org")) return 1;
+    if (strequal(L("s"),"edu")) return 1;
+    if (strequal(L("s"),"gov")) return 1;
+    if (strequal(L("s"),"mil")) return 1;
+    if (strequal(L("s"),"ac"))  return 1;
+    if (strequal(L("s"),"sch")) return 1;
+    if (strequal(L("s"),"ne"))  return 1;
+    if (strequal(L("s"),"or"))  return 1;
+    if (strequal(L("s"),"ltd")) return 1;
+    if (strequal(L("s"),"plc")) return 1;
+    if (strequal(L("s"),"gen")) return 1;
+    return 0;
+}
+
 CheckMore(L("var")) {
 L("bar")=1;
     L("val")=pnnext(L("var"));
@@ -31,7 +69,10 @@ while(L("bar"))
 AddAttrs(L("node"))
 {
     L("concept")=pnvar(L("node"),"con");
+    if(pnvar(L("node"),"local"))
     addstrval(L("concept"),"local",pnvar(L("node"),"local"));
+    if(pnvar(L("node"),"subdomain"))
+    addstrval(L("concept"),"subdomain",pnvar(L("node"),"subdomain"));
     if(pnvar(L("node"),"domainname"))
     addstrval(L("concept"),"domainname",pnvar(L("node"),"domainname"));
     if(pnvar(L("node"),"dn"))

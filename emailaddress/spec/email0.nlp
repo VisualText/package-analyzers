@@ -1,0 +1,109 @@
+###############################################
+# FILE: email0
+# SUBJ: local@host email. Matches the whole host as one wild and
+#       decomposes it by walking the label tokens (which carry the
+#       domain/country dict tags), so any number of subdomains is
+#       handled consistently:
+#         subdomain.example.com    -> sub=subdomain dom=example tld=com
+#         deep.sub.example.com     -> sub=deep.sub  dom=example tld=com
+#         university.edu.uk        -> dom=university tld=edu cd=uk
+#         subdomain.example.co.uk  -> sub=subdomain dom=example tld=co cd=uk
+#         example.de               -> dom=example cd=de
+#       Only fires when the final label is a known gTLD or ccTLD;
+#       otherwise noop() leaves the tokens for the legacy passes.
+# CREATED: 2026-06-07
+###############################################
+@NODES _EMAILZONE
+
+@POST
+# --- walk host tokens into label arrays (label text + dict tags) ---
+L("tok") = N(4);
+L("n")   = 0;
+L("cur") = 0;        # current label text being assembled (0 = none yet)
+L("cdom")= 0;        # current label: has a "domain" (gTLD) tag?
+L("cctry")=0;        # current label: country name from "country" tag
+L("go")  = 1;
+while (L("go") && L("tok")) {
+    L("t") = pnvar(L("tok"),"$text");
+    if (strequal(L("t"),".")) {
+        if (L("cur")) {
+            L("lab")[L("n")]  = L("cur");
+            L("ldom")[L("n")] = L("cdom");
+            L("lctry")[L("n")]= L("cctry");
+            L("n")++;
+            L("cur")=0; L("cdom")=0; L("cctry")=0;
+        }
+    } else if (strisalpha(L("t")) || strisdigit(L("t")) || strequal(L("t"),"-")) {
+        if (L("cur")) L("cur") = L("cur") + L("t");
+        else          L("cur") = L("t");
+        if (pnvar(L("tok"),"domain"))  L("cdom")  = 1;
+        if (pnvar(L("tok"),"country")) L("cctry") = pnvar(L("tok"),"country");
+    } else {
+        L("go") = 0;     # whitespace / other -> end of host
+    }
+    if (L("go")) L("tok") = pnnext(L("tok"));
+}
+if (L("cur")) {          # flush final label
+    L("lab")[L("n")]  = L("cur");
+    L("ldom")[L("n")] = L("cdom");
+    L("lctry")[L("n")]= L("cctry");
+    L("n")++;
+}
+
+# --- decompose from the right ---
+# A label is a ccTLD only if it is country-tagged AND exactly 2 chars
+# (ISO 3166 codes). country.dict also holds 3+ char gTLD descriptions
+# (biz, pro, aero ...) which must be treated as a gTLD (tld), not cd.
+L("li") = L("n") - 1;          # index of last label
+L("di") = -1;                  # index that will be the registrable domain
+L("ok") = 0;
+L("isCC") = 0;                 # is the final label a real 2-letter ccTLD?
+if (L("li") >= 1) {
+    if (L("lctry")[L("li")]) {
+        if (strlength(L("lab")[L("li")]) == 2)
+            L("isCC") = 1;
+    }
+}
+if (L("li") >= 1 && L("isCC")) {
+    # ccTLD (2-letter ISO code) as the final label
+    S("cd")      = L("lab")[L("li")];
+    S("country") = L("lctry")[L("li")];
+    L("ok") = 1;
+    if (SecondLevel(L("lab")[L("li")-1])) {
+        S("tld") = L("lab")[L("li")-1];      # second-level (co.uk, edu.uk)
+        L("di") = L("li") - 2;
+    } else {
+        L("di") = L("li") - 1;               # bare ccTLD (example.de)
+    }
+} else if (L("li") >= 1 && (L("ldom")[L("li")] || L("lctry")[L("li")])) {
+    # gTLD: domain-tagged, or a 3+ char country.dict entry that is
+    # really a gTLD description (biz / pro / aero ...)
+    S("tld") = L("lab")[L("li")];
+    L("di")  = L("li") - 1;
+    L("ok")  = 1;
+}
+
+if (L("ok") && L("di") >= 0) {
+    S("local")      = N("$text",2);
+    S("domainname") = L("lab")[L("di")];
+    if (L("di") >= 1) {
+        L("sub") = L("lab")[0];
+        L("k")   = 1;
+        while (L("k") < L("di")) {
+            L("sub") = L("sub") + "." + L("lab")[L("k")];
+            L("k")++;
+        }
+        S("subdomain") = L("sub");
+    }
+    single();
+} else {
+    noop();
+}
+
+@RULES
+_emaildone <-
+    _xWILD [one match=(_xWHITE _xSTART \-)]																	### 			(1)
+    _xWILD [min=1 max=0 match=(_xALPHA _xNUM \. \- \_ \$ \* \' \( \) \! \# \% \& \+ \/ \= \? \^ \{ \| \} \~)]	### (2) local 	(2)
+    \@																										### 			(3)
+    _xWILD [min=1 max=0 match=(_xALPHA _xNUM \- \.)]														### (4) host 	(4)
+    @@

@@ -1,0 +1,17 @@
+SCRATCH FILE - mostly numeric noise, a few real addresses
+
+noise: prices $19.99, $1,234.56; 12% off; order #4456-A; SKU 778899.
+dates: 2026-06-08, 06/08/2026, fiscal Q3. times: 3pm, 4:30.
+phones: 212-555-0100, 1-800-555-0199. ids: invoice 8821, room 210, gate 22.
+stats: 1,250 students, 99.9% uptime, 100 req/min, ratio 16:9, score 21-17.
+
+real addresses buried in here:
+  -> The office is located at 100 Main Street, Springfield, IL 62701-0100.
+  -> Warehouse: 4321 OAK ST, OAKTON MD 12345-6789.
+  -> Mail: PO BOX 25, Springfield, IL 62705-0025.
+  -> UK branch is located at 10 Downing Street, London, 34245 UK.
+
+not addresses (ignore): see section 3.2, figure 4.1, page 210, aisle 7.
+The temperature was 72 degrees and the speed limit is 55.
+
+One more: the depot is located at 900 Depot Lane, Decatur, IL 62521-0900.

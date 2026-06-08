@@ -1,0 +1,46 @@
+###############################################
+# FILE: LinkZone
+# SUBJ: Build _LINKZONE regions around web links / URLs.
+#       Operates on the whole tokenized text (@NODES _ROOT), not lines,
+#       so several links on one line (e.g. two Markdown links) each get
+#       their own zone.
+#
+#       A URL is a contiguous run of URL characters with no single
+#       special anchor - but its registrable part always ends in a TLD
+#       immediately preceded by a ".". So the rule triggers on a
+#       domain/country-tagged token (the TLD, from domain.dict /
+#       country.dict) that follows a ".", then grows the zone OUTWARD
+#       over URL characters: left across the host and scheme, right
+#       across the path/query. Whitespace and the wrapper delimiters
+#       that are NOT URL characters (< > " ( ) [ ] space) bound the run,
+#       so Markdown [text](url) and HTML href="url" yield a clean URL.
+#
+#       The TLD element carries [trig] so the engine only attempts the
+#       rule at TLD tokens and anchors there, matching outward rather
+#       than backtracking a greedy wild. Requiring the "." right before
+#       the TLD keeps common English words that are also ccTLDs
+#       (in, is, it, me, us, ...) from triggering a zone in prose.
+#
+#       NOTE: node is _LINKZONE (no internal underscore) - the rule
+#       parser splits a reduce-name at an internal "_".
+# CREATED: 2026-06-08
+###############################################
+@NODES _ROOT
+
+# gTLD trigger (domain.dict: com, org, aero, app, ...)
+@RULES
+_LINKZONE <-
+	_xWILD [min=0 max=0 match=(_xALPHA _xNUM \/ \@ \. \- \_ \$ \+ \! \* \' \? \= \& \:)]	### (1) scheme/host before the TLD
+	\.																					### (2) dot before the TLD
+	_xWILD [one trig match=(_xVAR("domain"))]											### (3) TLD (trigger)
+	_xWILD [min=0 max=0 match=(_xALPHA _xNUM \/ \@ \. \- \_ \$ \+ \! \* \' \? \= \& \:)]	### (4) path/query after the TLD
+	@@
+
+# ccTLD trigger (country.dict: uk, ly, io, de, ...)
+@RULES
+_LINKZONE <-
+	_xWILD [min=0 max=0 match=(_xALPHA _xNUM \/ \@ \. \- \_ \$ \+ \! \* \' \? \= \& \:)]	### (1) scheme/host before the TLD
+	\.																					### (2) dot before the TLD
+	_xWILD [one trig match=(_xVAR("country"))]											### (3) ccTLD (trigger)
+	_xWILD [min=0 max=0 match=(_xALPHA _xNUM \/ \@ \. \- \_ \$ \+ \! \* \' \? \= \& \:)]	### (4) path/query after the TLD
+	@@

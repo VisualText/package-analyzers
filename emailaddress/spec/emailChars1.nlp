@@ -1,0 +1,16 @@
+###############################################
+# FILE: emailChars
+# SUBJ: comment
+# AUTH: David de Hilster
+# CREATED: 2026-6-7 18:12:16
+# MODIFIED:
+###############################################
+
+@NODES _EMAIL_ZONE
+
+@POST
+N("ec1") = 1;
+@RULES
+_xNIL <-
+	_xWILD [one match=(\. \- \_ \$ \* \' \( \) \! \# \% \& \+ \/ \= \? \^ \_ \{ \| \} \~)]	### (2)
+	@@

@@ -1,0 +1,12 @@
+Dear Customer,
+
+Thank you for your order. It will ship to the address on file, which is
+1450 Sunset Boulevard, Los Angeles, CA 90026-1450.
+
+If you need to update it, our mailing address is PO BOX 700, Los Angeles,
+CA 90053-0700.
+
+Our returns center is located at 2200 Return Road, Vernon, CA 90058-2200.
+
+Sincerely,
+Customer Care

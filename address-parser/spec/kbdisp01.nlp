@@ -8,6 +8,6 @@
 
 @CODE
 
-DisplayKB(G("addresses"),1);
+SaveKB("addresses.kbb",G("addresses"));
 
 @@CODE

@@ -14,7 +14,7 @@
 #         - country code 1 (NANP) -> handled by Telep0/Telep1
 # CREATED: 2026-06-06
 ###############################################
-@PATH _ROOT _LINE
+@NODES _TELEPHONEZONE
 
 # Leave country code 1 (US/Canada) to the NANP passes.
 @CHECK

@@ -1,0 +1,19 @@
+SCRATCH FILE - mostly noise, a few real links
+
+versions: v3.14, 2.0.1, build 4456. files: report.docx, image.png, data.csv,
+archive.tar.gz, notes.txt. abbreviations: e.g., i.e., etc., vs., Inc.
+times: 12:30, 9:00 a.m. ratios: 16:9, 4:3. prices: 9.99, 1,234.56.
+ip-ish: 192.168.0.1 and 10.0.0.255 (not URLs here). dates: 2026.06.08.
+
+real links buried in here:
+  -> https://www.example.com/
+  -> http://plain.example.org/page
+  -> https://sub.example.co.uk/a/b?x=1&y=2
+  -> ftp://ftp.example.net/pub/file.zip
+  -> bare domain with path: www.example.io/start
+  -> short: https://bit.ly/abc123
+
+not links (ignore): the sentence ends here. Mr. Smith said so. The U.S. and
+the U.K. agreed. See section 3.2 and figure 4.1. The file a.b.c is local.
+
+trailing in prose: more details on https://docs.example.com/end. The end.

@@ -1,0 +1,15 @@
+TRIP ITINERARY - Tokyo, October 2026
+
+Booking agent: agent@travelco.example.com (24/7 line on the voucher)
+Hotel concierge: concierge@hotel.example.co.jp
+Local guide: guide@tours.example.jp
+
+If your flight changes, notify the agent immediately at
+agent@travelco.example.com and cc changes@travelco.example.com.
+
+Emergency contact at home: family.contact@example.com.
+
+The guide prefers messages sent as guide at tours dot example dot jp when
+roaming data is spotty.
+
+Travel insurance claims: claims@insurer.example.co.uk.

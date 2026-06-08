@@ -1,0 +1,14 @@
+TRIP ITINERARY - Tokyo, October 2026
+
+Flights:    https://www.exampleair.com/booking/ABC123
+Hotel:      https://www.examplehotel.co.jp/reservations/789
+Rail pass:  https://japanrail.example.jp/order?type=7day
+City guide: https://www.timeout.com/tokyo
+
+Maps:
+- Airport to hotel: https://maps.example.com/dir/airport/hotel
+- Day 1 walk: https://maps.example.com/?q=asakusa&z=14
+
+Translation help: https://translate.example.com/?sl=en&tl=ja&text=hello.
+Currency: https://www.xe.com/currencyconverter/?from=USD&to=JPY.
+Travel insurance docs (PDF): https://insure.example.co.uk/policy/4456.pdf.

@@ -1,0 +1,15 @@
+COURSE SYLLABUS - Intro to Web Systems
+
+Course site: https://www.cs.university.edu/courses/web-systems
+Forum:       https://piazza.com/university/fall2026/websys
+Submit:      https://gradescope.com/courses/123456
+
+Readings:
+- HTTP spec: https://www.rfc-editor.org/rfc/rfc9110
+- MDN HTTP:  https://developer.mozilla.org/en-US/docs/Web/HTTP
+- Article:   https://blog.example.org/why-rest
+
+Lab VMs are provisioned at https://lab.cs.university.edu/vm/request.
+Office hours calendar: https://calendar.university.edu/cs/websys.
+Archived lectures: ftp://ftp.cs.university.edu/courses/websys/2025/.
+UK exchange section: https://www.cs.university.ac.uk/exchange.

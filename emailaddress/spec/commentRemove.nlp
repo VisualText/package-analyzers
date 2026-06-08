@@ -1,0 +1,17 @@
+###############################################
+# FILE: comment
+# SUBJ: comment
+# AUTH: David de Hilster
+# CREATED: 2026-6-7 18:17:33
+# MODIFIED:
+###############################################
+
+@NODES _ROOT
+
+@POST
+excise(1,1);
+
+@RULES
+_xNIL <-
+	_xWILD [one match=(_comment _BLANKLINE)]
+	@@

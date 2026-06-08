@@ -1,0 +1,15 @@
+ADDRESS BOOK - keep private
+
+Family:
+  Mom is located at 12 Maple Court, Madison, WI 53703-0012.
+  Sister resides at 88 Lake Street, Madison, WI 53703-0088.
+
+Work:
+  Office is located at 1 Capitol Square, Madison, WI 53703-0001.
+  Warehouse: 4000 Industrial Drive, Sun Prairie, WI 53590-4000.
+
+Mail:
+  PO BOX 55, Madison, WI 53701-0055.
+
+Overseas:
+  Aunt resides at 9 Castle Street, Edinburgh, 38849 UK.

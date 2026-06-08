@@ -1,0 +1,36 @@
+###############################################
+# FILE: TelephoneZone
+# SUBJ: Build _TELEPHONEZONE regions around telephone numbers.
+#       Operates on the whole tokenized text (@NODES _ROOT), not lines.
+#
+#       A phone number is a run of digit groups joined by phone
+#       separators (+ - . ( ) and spaces/tabs). The zone is that run:
+#       an optional leading "+ ( -", a first digit group (the trigger),
+#       and then any number of further digit/separator tokens. The run
+#       deliberately includes space and tab (numbers like
+#       "+1 (212) 456-7890" have internal spaces) but NOT newline, so a
+#       zone never crosses a line and adjacent numbers on separate lines
+#       stay in separate zones.
+#
+#       The zone only has to CONTAIN a number; the Telep* passes that
+#       run inside each zone keep all the precision (group lengths,
+#       country codes), so a zone built around a price or a date simply
+#       produces no _telephone.
+#
+#       The first digit group carries [trig] so the engine indexes the
+#       rule on a number token and only attempts it where digits occur.
+#
+#       NOTE: the node is _TELEPHONEZONE (no internal underscore) - the
+#       rule parser splits a reduce-name at an internal "_", so
+#       "_TELEPHONE_ZONE" will not compile. Every Telep* pass now runs
+#       @NODES _TELEPHONEZONE.
+# CREATED: 2026-06-08
+###############################################
+@NODES _ROOT
+
+@RULES
+_TELEPHONEZONE <-
+	_xWILD [min=0 max=2 match=(\+ \( \-)]						### (1) optional leading symbol(s)
+	_xNUM [trig]												### (2) first digit group (trigger)
+	_xWILD [min=0 max=0 match=(_xNUM \+ \- \. \( \) \  \t)]	### (3) rest of the number run
+	@@

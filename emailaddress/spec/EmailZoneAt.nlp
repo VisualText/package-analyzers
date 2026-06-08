@@ -1,0 +1,26 @@
+###############################################
+# FILE: EmailZoneAt
+# SUBJ: Build _EMAILZONE regions around a spelled-out "at" trigger,
+#       i.e. scraper-dodging addresses like "john at example dot com".
+#       Anchors on a standalone at/At/AT/aT token and grabs a same-line
+#       window: up to 10 tokens before and up to 24 after, stopping at
+#       a newline.
+#
+#       The window only has to CONTAIN the obfuscated address; the
+#       email0at pass then walks outward from the "at", bounds the
+#       local and the domain at prose boundaries, and fires only when a
+#       "dot" word and a real gTLD/ccTLD are present (otherwise it
+#       noop()s). So an over-wide window costs nothing in precision.
+#
+#       Runs AFTER EmailZone, so literal "@" addresses are already
+#       consumed and cannot be re-captured here.
+# CREATED: 2026-06-08
+###############################################
+@NODES _ROOT
+
+@RULES
+_EMAILZONE <-
+	_xWILD [min=0 max=10 fails=(\n \r at At AT aT _EMAILZONE)]	### (1) leading window
+	_xWILD [one trig match=(at At AT aT)]						### (2) the "at" trigger
+	_xWILD [min=1 max=24 fails=(\n \r _EMAILZONE)]				### (3) domain region
+	@@

@@ -1,0 +1,14 @@
+JANE DOE
+Software Engineer
+
+Current address: 1200 Pine Street, Seattle, WA 98101-1200.
+Permanent address: 45 Hometown Road, Spokane, WA 99201-0045.
+
+EXPERIENCE
+- Acme Corp, located at 500 Tech Plaza, Bellevue, WA 98004-0500.
+- Globex Inc, located at 1 Innovation Way, Redmond, WA 98052-0001.
+
+EDUCATION
+- State University, 200 Campus Drive, Pullman, WA 99164-0200.
+
+References available. Mail to PO BOX 12, Seattle, WA 98111-0012.

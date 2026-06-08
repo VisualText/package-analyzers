@@ -8,5 +8,6 @@
 
 @CODE
 
-G("links") = getconcept(findroot(),"Links");
+G("links") = getconcept(findroot(),"links");
+
 @@CODE

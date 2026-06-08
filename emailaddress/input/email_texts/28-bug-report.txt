@@ -1,0 +1,19 @@
+BUG REPORT
+
+Summary: App crashes when exporting CSV with unicode headers.
+Severity: High
+Filed by: tester.qa@example.com
+
+Steps to reproduce:
+1. Open the app
+2. Export a sheet with emoji in the header
+3. Crash
+
+Reported upstream to the library maintainers at maintainers@opensource.example.org.
+Workaround discussed with vendor-support@vendor.example.com.
+
+If you can reproduce, please add details and cc triage@example.com. The
+original reporter can also be reached as tester dot qa at example dot com if
+email filters block the main address.
+
+Related: see issue tracked by issues+bot@ci.example.com.

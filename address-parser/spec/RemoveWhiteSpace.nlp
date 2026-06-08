@@ -7,7 +7,7 @@
 # Copyright 2000, Text Analysis International #
 ###############################################
 
-@PATH _ROOT _LINE
+@PATH _ROOT _ADDRESSZONE
 
 @POST
 excise(1,1);

@@ -13,5 +13,5 @@
 pnrename(N(1),"_conlink");
 @RULES
 _xNIL <-
-	_LINE	### (1)
+	_LINKZONE	### (1)
 	@@

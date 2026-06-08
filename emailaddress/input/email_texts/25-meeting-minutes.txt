@@ -1,0 +1,17 @@
+BOARD MEETING MINUTES
+Date: 2026-04-10
+
+Present: chair@board.example.org, treasurer@board.example.org,
+secretary@board.example.org
+
+1. The treasurer reported the annual figures. Detailed questions to
+   finance@board.example.org.
+
+2. The membership drive will be coordinated by membership@board.example.org.
+   The web volunteer (web at board dot example dot org) will update the site.
+
+3. New PO box and a shared inbox: contact@board.example.org.
+
+4. Legal review of the new bylaws assigned to counsel@law-firm.example.com.
+
+Adjourned. Minutes prepared by secretary@board.example.org.

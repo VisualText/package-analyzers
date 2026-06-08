@@ -6,7 +6,7 @@
 # MODIFIED:
 ###############################################
 
-@PATH _ROOT _LINE
+@PATH _ROOT _LINKZONE
 @PRE
 <2,2> var("domain");
 <4,4> var("country");
