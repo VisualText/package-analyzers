@@ -362,7 +362,7 @@ QuoteIfNeeded(L("str")) {
 	if (!L("str"))
 		return 0;
 	L("new") = strsubst(L("str"),"\"","\\\"");
-	if (strcontains(" ",L("str")) || strhaspunct(L("str")))
+	if (strcontains(" ",L("str")) || strhaspunct(L("str")) || strisdigit(L("str")))
 		L("new") = "\"" + L("new") + "\"";
 	return L("new");
 }
