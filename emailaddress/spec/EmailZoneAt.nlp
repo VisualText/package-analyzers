@@ -10,7 +10,15 @@
 #       email0at pass then walks outward from the "at", bounds the
 #       local and the domain at prose boundaries, and fires only when a
 #       "dot" word and a real gTLD/ccTLD are present (otherwise it
-#       noop()s). So an over-wide window costs nothing in precision.
+#       noop()s).
+#
+#       The domain region stops at the next "at" and at sentence
+#       punctuation, and an "at" whose region has no "dot" is not a
+#       trigger. Otherwise a prose "at" ("send an email at john at mail
+#       dot com"), or a region running on into the next address
+#       ("... dot uk. But dont spam bob at 243 dot org"), put a later
+#       address's local part inside an earlier zone, where email0at
+#       could not reach it (VisualText/analyzers#42).
 #
 #       Runs AFTER EmailZone, so literal "@" addresses are already
 #       consumed and cannot be re-captured here.
@@ -18,9 +26,12 @@
 ###############################################
 @NODES _ROOT
 
+@CHECK
+if (!strcontainsnocase(" dot ", " " + N("$text",3) + " "))
+	fail();
 @RULES
 _EMAILZONE <-
 	_xWILD [min=0 max=10 fails=(\n \r at At AT aT _EMAILZONE)]	### (1) leading window
 	_xWILD [one trig match=(at At AT aT)]						### (2) the "at" trigger
-	_xWILD [min=1 max=24 fails=(\n \r _EMAILZONE)]				### (3) domain region
+	_xWILD [min=1 max=24 fails=(\n \r at At AT aT \. \, \; \! \? _EMAILZONE)]	### (3) domain region
 	@@
