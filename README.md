@@ -8,7 +8,8 @@ document — HTML, Markdown, or plain text — and emits JSON describing what it
 found (emails, phone numbers, links, addresses, …).
 
 These are the analyzers packaged for and dispatched to
-[VisualText/py-package-nlpengine](https://github.com/VisualText/py-package-nlpengine).
+[VisualText/py-package-nlpengine](https://github.com/VisualText/py-package-nlpengine), which ships them in the
+[NLPPlus Python package](https://pypi.org/project/NLPPlus/).
 
 ## Analyzers
 
